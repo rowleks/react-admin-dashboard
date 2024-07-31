@@ -1,0 +1,36 @@
+@import "../../styles/variables.scss";
+
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .menu-category {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+
+        .title {
+            color: $soft-clr;
+        }
+
+
+        .menu-items {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 10px;
+
+            &:hover {
+                background-color: $soft-bg;
+            }
+
+            &.active {
+                background-color: $soft-bg;
+            }
+        }
+    }
+
+}

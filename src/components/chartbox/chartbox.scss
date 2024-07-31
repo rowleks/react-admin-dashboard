@@ -1,0 +1,36 @@
+@import "../../styles/variables.scss";
+
+
+.chartbox {
+display: flex;
+justify-content: space-between;
+height: 100%;
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 3;
+
+
+    .title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+.right {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex: 2;
+
+    .gains {
+        text-align: right;
+    }
+}
+
+
+
+}
