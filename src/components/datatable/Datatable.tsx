@@ -1,26 +1,49 @@
 import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid"
 import "./datatable.scss"
+import { Link } from "react-router-dom"
+
+type Props = {
+  columns: GridColDef[],
+  rows:object[]
+  slug: string
+}
 
 
-function Datatable({columns}: {columns :GridColDef[]}) {
 
-      const rows = [
-        { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35, status: true },
-        { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-        { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-        { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-        { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-        { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-        { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-        { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-        { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-      ];
+function Datatable(props:Props) {
+
+  const { columns, rows, slug} = props
+
+  const handleDelete = (id:number) => {
+    return console.log(id + " has been deleted")
+  }
+
+  const actionCol: GridColDef = 
+    {
+      field: "action",
+      headerName: "Action",
+      width: 100,
+      renderCell: (params:String) => {
+        return (
+          <div className="action">
+            <Link to={`/${slug}/${params.row.id}`}>
+              <img src="/view.svg" alt="" />
+            </Link>
+
+            <div className="delete">
+              <img  onClick={()=>handleDelete(params.row.id)} src="/delete.svg" alt="" />
+            </div>
+          </div>
+        )
+      }
+    }
+
   return (
     <div className="datatable">
         <DataGrid
         className="datagrid"
         rows={rows}
-        columns={columns}
+        columns={[...columns, actionCol] }
         initialState={{
           pagination: {
             paginationModel: { page: 0, pageSize: 5 },

@@ -1,6 +1,7 @@
 import { GridColDef } from "@mui/x-data-grid";
 import Datatable from "../../components/datatable/Datatable"
 import "./users.scss"
+import { userRows } from "../../data";
 
 function Users() {
 
@@ -59,7 +60,7 @@ function Users() {
       <button>Add New User</button>
       </div>
 
-        <Datatable columns={columns} />
+        <Datatable columns={columns} rows={userRows} slug="user" />
       
     </div>
   )

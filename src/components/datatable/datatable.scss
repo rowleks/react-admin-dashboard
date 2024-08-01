@@ -5,6 +5,19 @@
     .datagrid {
         background-color: #FFF;
         padding: 1rem;
+        width: 100%;
+
+        .action {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            img {
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+            }
+        }
     }
 
     .MuiDataGrid-toolbarContainer {
