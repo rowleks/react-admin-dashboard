@@ -2,6 +2,8 @@ import { GridColDef } from "@mui/x-data-grid";
 import Datatable from "../../components/datatable/Datatable"
 import "./users.scss"
 import { userRows } from "../../data";
+import AddData from "../../components/adddata/AddData";
+import { useState } from "react";
 
 function Users() {
 
@@ -52,15 +54,20 @@ function Users() {
       type: "boolean",
     },
   ];
+
+  const [ open, setOpen ] = useState(false)
+  const openModal = () => setOpen(true)
   return (
     <div className='users'>
       
       <div className="header">
       <h1>User</h1>
-      <button>Add New User</button>
+      <button onClick={openModal}>Add New User</button>
       </div>
 
         <Datatable columns={columns} rows={userRows} slug="user" />
+
+        {open && <AddData slug="User" columns={columns} setOpen={setOpen} />}
       
     </div>
   )

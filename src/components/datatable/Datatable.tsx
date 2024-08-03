@@ -1,4 +1,4 @@
-import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid"
+import { DataGrid, GridColDef, GridRenderCellParams, GridToolbar } from "@mui/x-data-grid"
 import "./datatable.scss"
 import { Link } from "react-router-dom"
 
@@ -23,7 +23,7 @@ function Datatable(props:Props) {
       field: "action",
       headerName: "Action",
       width: 100,
-      renderCell: (params:String) => {
+      renderCell: (params:GridRenderCellParams) => {
         return (
           <div className="action">
             <Link to={`/${slug}/${params.row.id}`}>
